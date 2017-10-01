@@ -1,6 +1,6 @@
 ## react-touchable-component
 
-> Draggable react component with an insanely easy to use API
+> Touchable / draggable react component with an easy to use API
 
 <br />
 
@@ -22,7 +22,7 @@ render () {
   return (
     <Touchable>
       {({x, y}) => (
-        <div style={{transform: translateY(`${yDelta}px`)}}>
+        <div style={{transform: `translate3d(${x}px, ${y}px, 0)`}}>
           Yo, Im moving around
         </div>
       )}
