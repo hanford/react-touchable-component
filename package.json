@@ -1,0 +1,62 @@
+{
+  "name": "react-touchable-component",
+  "version": "0.1.0",
+  "description": "Draggable react drawer",
+  "main": "./dist/react-touchable-component.min.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hanford/react-touchable-component.git"
+  },
+  "homepage": "https://github.com/hanford/react-touchable-component",
+  "bugs": "https://github.com/hanford/react-touchable-component/issues",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "build": "webpack -p",
+    "prepare": "npm run build"
+  },
+  "authors": [
+    "Jack Hanford"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "~6.24.1",
+    "babel-loader": "~6.4.1",
+    "babel-preset-env": "~1.5.2",
+    "babel-preset-react": "~6.24.1",
+    "babel-preset-stage-0": "~6.24.1",
+    "react": "~15.5.3",
+    "react-dom": "~15.5.3",
+    "styled-jsx": "~0.5.7",
+    "webpack": "~2.3.3"
+  },
+  "dependencies": {
+    "global": "~4.3.1",
+    "prop-types": "~15.5.8"
+  },
+  "peerDependencies": {
+    "react": "^15.0.0",
+    "react-dom": "^15.0.0"
+  },
+  "tags": [
+    "react",
+    "touch",
+    "touchable",
+    "draggable",
+    "moveable",
+    "move",
+    "event",
+    "gesture"
+  ],
+  "keywords": [
+    "react",
+    "touch",
+    "touchable",
+    "draggable",
+    "moveable",
+    "move",
+    "event",
+    "gesture"
+  ]
+}

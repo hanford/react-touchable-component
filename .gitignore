@@ -1,0 +1,6 @@
+**.log
+node_modules
+examples/simple/build
+**/build
+.DS_Store
+/dist
