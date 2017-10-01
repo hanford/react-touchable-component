@@ -21,8 +21,14 @@ export default class ReactTouchableComponent extends PureComponent {
   start = {}
 
   state = {
-    x: 0,
-    y: 0,
+    start: {
+      y: 0,
+      x: 0
+    },
+    move: {
+      y: 0,
+      x: 0
+    },
     listeners: false
   }
 
@@ -55,36 +61,33 @@ export default class ReactTouchableComponent extends PureComponent {
   }
 
   onTouchStart = event => {
-    if (event.touches.length === 0) return
-
     event.stopPropagation()
+    event.preventDefault()
 
     const { onDragStart } = this.props
 
     onDragStart(this.state)
 
-    this.touching = true
-    this.start = normalizeTouch(event)
-
-    event.preventDefault()
+    this.setState({ start: normalizeTouch(event), touching: true })
   }
 
   onTouchMove = event => {
-    if (this.touching) event.stopPropagation()
+    if (this.state.touching) event.stopPropagation()
 
     const movePoint = normalizeTouch(event)
     const { onDragMove } = this.props
+    const { start } = this.state
 
-    const next = {
-      x: movePoint.x - this.start.x,
-      y: movePoint.y - this.start.y
+    const move = {
+      x: movePoint.x - start.x,
+      y: movePoint.y - start.y
     }
 
-    window.requestAnimationFrame(() => this.setState(next, () => onDragMove(this.state)))
+    window.requestAnimationFrame(() => this.setState({ move }, () => onDragMove(this.state)))
   }
 
   onTouchEnd = event => {
-    this.touching = false
+    this.setState({ touching: false })
     // reset?
     // this.setState({ x: 0, y: 0 })
   }
@@ -92,7 +95,7 @@ export default class ReactTouchableComponent extends PureComponent {
   render () {
     return (
       <div ref={root => { this.root = root }}>
-        {this.props.children(this.state)}
+        {this.props.children(this.state.move)}
       </div>
     )
   }
